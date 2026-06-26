@@ -4,79 +4,74 @@ import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
   title: "Careers at OAI.co — Join the Operational OS™ Team",
-  description:
-    "Build the future of AI operations for middle market companies. Explore open roles at OAI.co.",
+  description: "Build the future of AI operations for middle market companies. Explore open roles at OAI.co.",
 };
+
+const whyOai = [
+  {
+    title: "Real impact",
+    desc: "You see your work in production, changing how real businesses run. No six-month spec cycles. Direct line from your work to client outcomes.",
+  },
+  {
+    title: "Frontier AI work",
+    desc: "We work with the most advanced AI systems available. Every project pushes what's possible with agentic AI in production business environments.",
+  },
+  {
+    title: "A growing market",
+    desc: "Middle market AI is one of the largest underserved opportunities in enterprise software. We're early, and the market is moving fast.",
+  },
+  {
+    title: "Build from scratch",
+    desc: "We're not maintaining legacy code. You're building new systems — agents, workflows, integrations — that didn't exist before.",
+  },
+  {
+    title: "Learn constantly",
+    desc: "Every engagement is a new industry, a new tech stack, a new set of problems. You'll build a broader operational AI skill set than anywhere else.",
+  },
+  {
+    title: "Small team, high trust",
+    desc: "We operate with a small, senior team. High trust, high autonomy, high accountability. Your judgment matters here.",
+  },
+];
+
+const roles = [
+  { title: "AI Systems Architect", type: "Full-time", location: "Seattle, WA or Remote", dept: "Engineering" },
+  { title: "AI Implementation Consultant", type: "Full-time", location: "Seattle, WA or Remote", dept: "Delivery" },
+  { title: "Business Process Analyst", type: "Full-time", location: "Seattle, WA", dept: "Delivery" },
+  { title: "Enterprise Account Executive", type: "Full-time", location: "Remote", dept: "Sales" },
+  { title: "AI Operations Manager", type: "Full-time", location: "Seattle, WA or Remote", dept: "Operations" },
+];
 
 export default function CareersPage() {
   return (
     <>
-      <section className="pt-32 pb-20 bg-[#07111F] relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #F97316 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-[#F97316] text-sm font-semibold uppercase tracking-widest">Careers</span>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white mt-3 mb-6 leading-tight">
-              Build the future of AI operations
-            </h1>
-            <p className="text-[#94a3b8] text-xl leading-relaxed">
-              We're building Operational OS™ — the AI operating system for middle market companies. If you
-              want to work on something that genuinely changes how businesses run, we want to talk.
+      <section className="min-h-[70vh] flex flex-col justify-end px-6 pb-20 pt-36 bg-[#0a0a0a]">
+        <div className="max-w-[1400px] mx-auto w-full">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-8">Careers</p>
+          <h1 className="max-w-4xl text-5xl lg:text-7xl font-light leading-none tracking-tight text-[#f0f0f0] mb-10">
+            Build the future of AI operations.
+          </h1>
+          <div className="border-t border-[#1e1e1e] pt-10">
+            <p className="max-w-xl text-sm leading-relaxed text-[#555555]">
+              We're building Operational OS™ — the AI operating system for middle market companies. If you want to work on something that genuinely changes how businesses run, we want to talk.
             </p>
           </div>
         </div>
       </section>
 
       {/* Why OAI */}
-      <section className="py-24 bg-[#0B1B2B]">
+      <section className="py-24 bg-[#111111]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-[#22D3EE] text-sm font-semibold uppercase tracking-widest">Why OAI.co</span>
-            <h2 className="text-4xl font-bold text-white mt-3">What it's like to work here</h2>
+          <div className="border-b border-[#1e1e1e] pb-10 mb-12">
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">Why OAI.co</p>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0]">What it's like to work here</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "🎯",
-                title: "Real impact",
-                desc: "You see your work in production, changing how real businesses run. No six-month spec cycles. Direct line from your work to client outcomes.",
-              },
-              {
-                icon: "🤖",
-                title: "Frontier AI work",
-                desc: "We work with the most advanced AI systems available. Every project pushes what's possible with agentic AI in production business environments.",
-              },
-              {
-                icon: "📈",
-                title: "A growing market",
-                desc: "Middle market AI is one of the largest underserved opportunities in enterprise software. We're early, and the market is moving fast.",
-              },
-              {
-                icon: "🏗️",
-                title: "Build from scratch",
-                desc: "We're not maintaining legacy code. You're building new systems — agents, workflows, integrations — that didn't exist before.",
-              },
-              {
-                icon: "🧠",
-                title: "Learn constantly",
-                desc: "Every engagement is a new industry, a new tech stack, a new set of problems. You'll build a broader operational AI skill set than anywhere else.",
-              },
-              {
-                icon: "🤝",
-                title: "Small team, high trust",
-                desc: "We operate with a small, senior team. High trust, high autonomy, high accountability. Your judgment matters here.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="bg-[#07111F] border border-[#D7DEE8]/10 rounded-xl p-6">
-                <span className="text-3xl block mb-4">{item.icon}</span>
-                <h3 className="text-white font-bold mb-2">{item.title}</h3>
-                <p className="text-[#94a3b8] text-sm leading-relaxed">{item.desc}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e1e]">
+            {whyOai.map((item, i) => (
+              <div key={i} className="bg-[#111111] p-6 hover:bg-[#1a1a1a] transition-colors">
+                <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] mb-4">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="text-[#f0f0f0] font-medium mb-3">{item.title}</h3>
+                <p className="text-[#555555] text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -84,49 +79,45 @@ export default function CareersPage() {
       </section>
 
       {/* Open roles */}
-      <section className="py-24 bg-[#07111F]">
+      <section className="py-24 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-[#F97316] text-sm font-semibold uppercase tracking-widest">Open Roles</span>
-            <h2 className="text-4xl font-bold text-white mt-3">Current openings</h2>
+          <div className="border-b border-[#1e1e1e] pb-10 mb-12">
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">Open Roles</p>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0]">Current openings</h2>
           </div>
-          <div className="space-y-4">
-            {[
-              { title: "AI Systems Architect", type: "Full-time", location: "Seattle, WA or Remote", dept: "Engineering" },
-              { title: "AI Implementation Consultant", type: "Full-time", location: "Seattle, WA or Remote", dept: "Delivery" },
-              { title: "Business Process Analyst", type: "Full-time", location: "Seattle, WA", dept: "Delivery" },
-              { title: "Enterprise Account Executive", type: "Full-time", location: "Remote", dept: "Sales" },
-              { title: "AI Operations Manager", type: "Full-time", location: "Seattle, WA or Remote", dept: "Operations" },
-            ].map((role, i) => (
-              <div key={i} className="flex items-center justify-between bg-[#0B1B2B] border border-[#D7DEE8]/10 rounded-xl p-6 hover:border-[#1D4ED8]/50 transition-all group">
+          <div className="divide-y divide-[#1e1e1e] border border-[#1e1e1e] mb-8">
+            {roles.map((role, i) => (
+              <div key={i} className="flex items-center justify-between px-6 py-5 hover:bg-[#111111] transition-colors group">
                 <div>
-                  <h3 className="text-white font-bold text-lg group-hover:text-[#22D3EE] transition-colors">{role.title}</h3>
+                  <h3 className="text-[#f0f0f0] font-medium group-hover:opacity-80 transition-opacity">{role.title}</h3>
                   <div className="flex items-center gap-4 mt-1">
-                    <span className="text-[#475569] text-sm">{role.dept}</span>
-                    <span className="text-[#475569] text-sm">·</span>
-                    <span className="text-[#475569] text-sm">{role.location}</span>
-                    <span className="text-[#475569] text-sm">·</span>
-                    <span className="text-[#22D3EE] text-sm">{role.type}</span>
+                    <span className="font-mono text-[10px] text-[#333333]">{role.dept}</span>
+                    <span className="font-mono text-[10px] text-[#2a2a2a]">·</span>
+                    <span className="font-mono text-[10px] text-[#333333]">{role.location}</span>
+                    <span className="font-mono text-[10px] text-[#2a2a2a]">·</span>
+                    <span className="font-mono text-[10px] text-[#555555]">{role.type}</span>
                   </div>
                 </div>
-                <Link href="/contact" className="px-5 py-2 border border-[#D7DEE8]/20 text-white text-sm font-medium rounded-lg hover:bg-[#1D4ED8] hover:border-[#1D4ED8] transition-all">
+                <Link href="/contact" className="px-4 py-2 border border-[#1e1e1e] font-mono text-[10px] uppercase tracking-[0.15em] text-[#555555] hover:border-[#333333] hover:text-[#f0f0f0] transition-colors flex-shrink-0">
                   Apply
                 </Link>
               </div>
             ))}
           </div>
-          <div className="mt-8 p-6 bg-[#0B1B2B] border border-[#D7DEE8]/10 rounded-xl">
-            <p className="text-[#94a3b8] text-sm">
-              Don't see a role that fits? We're always interested in exceptional people.{" "}
-              <Link href="/contact" className="text-[#22D3EE] hover:text-white transition-colors">
-                Send us a note →
-              </Link>
-            </p>
-          </div>
+          <p className="text-sm text-[#555555]">
+            Don't see a role that fits? We're always interested in exceptional people.{" "}
+            <Link href="/contact" className="text-[#888888] hover:text-[#f0f0f0] transition-colors">
+              Send us a note →
+            </Link>
+          </p>
         </div>
       </section>
 
-      <CTASection headline="Ready to build the future of AI operations?" subheadline="Reach out to info@dev.co with your background and why you're interested." dark={false} />
+      <CTASection
+        headline="Ready to build the future of AI operations?"
+        subheadline="Reach out with your background and why you're interested."
+        primaryCTA={{ label: "Get in Touch", href: "/contact" }}
+      />
     </>
   );
 }

@@ -15,55 +15,54 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <section className="pt-32 pb-20 bg-[#07111F]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <span className="text-[#22D3EE] text-sm font-semibold uppercase tracking-widest">Resources</span>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white mt-3 mb-6 leading-tight">
-              Tools, guides, and proof to accelerate your AI transformation
-            </h1>
+      <section className="min-h-[70vh] flex flex-col justify-end px-6 pb-20 pt-36 bg-[#0a0a0a]">
+        <div className="max-w-[1400px] mx-auto w-full">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-8">Resources</p>
+          <h1 className="max-w-4xl text-5xl lg:text-7xl font-light leading-none tracking-tight text-[#f0f0f0] mb-10">
+            Tools, guides, and proof.
+          </h1>
+          <div className="border-t border-[#1e1e1e] pt-10">
+            <p className="max-w-xl text-sm leading-relaxed text-[#555555]">
+              Everything you need to evaluate, plan, and justify an AI transformation for your middle market business.
+            </p>
           </div>
-
-          {[
-            { label: "Tools", items: tools, color: "#22D3EE" },
-            { label: "Guides", items: guides, color: "#1D4ED8" },
-            { label: "Proof", items: proof, color: "#F97316" },
-          ].map((group) => (
-            <div key={group.label} className="mb-16">
-              <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                <span className="w-px h-6" style={{ backgroundColor: group.color }} />
-                {group.label}
-              </h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {group.items.map((resource) => (
-                  <Link
-                    key={resource.slug}
-                    href={`/resources/${resource.slug}`}
-                    className="group block bg-[#0B1B2B] border border-[#D7DEE8]/10 rounded-xl p-6 hover:border-[#1D4ED8]/50 hover:-translate-y-1 transition-all"
-                  >
-                    <span className="text-3xl block mb-4">{resource.icon}</span>
-                    <div
-                      className="inline-block px-2.5 py-1 rounded-full text-xs font-semibold mb-3"
-                      style={{
-                        color: group.color,
-                        backgroundColor: `${group.color}15`,
-                        border: `1px solid ${group.color}30`,
-                      }}
-                    >
-                      {group.label}
-                    </div>
-                    <h3 className="text-white font-bold mb-2 group-hover:text-[#22D3EE] transition-colors">
-                      {resource.name}
-                    </h3>
-                    <p className="text-[#94a3b8] text-sm leading-relaxed">{resource.tagline}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
       </section>
-      <CTASection headline="Ready to start your AI journey?" dark={false} />
+
+      {[
+        { label: "Tools", items: tools },
+        { label: "Guides", items: guides },
+        { label: "Proof", items: proof },
+      ].map((group) => (
+        <section key={group.label} className="py-16 bg-[#111111] border-t border-[#1e1e1e] first:border-t-0">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+            <div className="border-b border-[#1e1e1e] pb-8 mb-10">
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333]">{group.label}</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1e1e1e]">
+              {group.items.map((resource) => (
+                <Link
+                  key={resource.slug}
+                  href={`/resources/${resource.slug}`}
+                  className="group bg-[#111111] p-6 hover:bg-[#1a1a1a] transition-colors"
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] mb-4">{group.label}</p>
+                  <h3 className="text-[#f0f0f0] font-medium mb-3 group-hover:opacity-80 transition-opacity">{resource.name}</h3>
+                  <p className="text-[#555555] text-xs leading-relaxed mb-5">{resource.tagline}</p>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] group-hover:text-[#888888] transition-colors">Access →</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <CTASection
+        headline="Ready to start your AI transformation?"
+        subheadline="Begin with the AI Readiness Assessment to get your personalized roadmap."
+        primaryCTA={{ label: "Get Started", href: "/contact" }}
+        secondaryCTA={{ label: "AI Readiness Assessment", href: "/operational-os/ai-readiness-assessment" }}
+      />
     </>
   );
 }

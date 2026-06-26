@@ -13,40 +13,41 @@ const categories = ["Leadership", "Revenue", "Operations", "Finance & Admin", "P
 export default function SolutionsPage() {
   return (
     <>
-      <section className="pt-32 pb-20 bg-[#07111F]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <span className="text-[#22D3EE] text-sm font-semibold uppercase tracking-widest">Solutions</span>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white mt-3 mb-6 leading-tight">
-              Practical AI implementation by business function
-            </h1>
-            <p className="text-[#94a3b8] text-xl leading-relaxed">
-              Purpose-built AI solutions for every core business function — from executive intelligence to AP
-              automation. Each solution is implemented on the Operational OS™ platform.
+      <section className="min-h-[70vh] flex flex-col justify-end px-6 pb-20 pt-36 bg-[#0a0a0a]">
+        <div className="max-w-[1400px] mx-auto w-full">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-8">Solutions</p>
+          <h1 className="max-w-4xl text-5xl lg:text-7xl font-light leading-none tracking-tight text-[#f0f0f0] mb-10">
+            Practical AI by business function.
+          </h1>
+          <div className="border-t border-[#1e1e1e] pt-10">
+            <p className="max-w-xl text-sm leading-relaxed text-[#555555]">
+              Purpose-built AI solutions for every core business function — from executive intelligence to AP automation. Each solution is implemented on the Operational OS™ platform.
             </p>
           </div>
+        </div>
+      </section>
 
+      <section className="py-24 bg-[#111111]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
           {categories.map((cat) => {
             const catSolutions = solutions.filter((s) => s.category === cat);
             if (!catSolutions.length) return null;
             return (
-              <div key={cat} className="mb-16">
-                <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                  <span className="w-px h-6 bg-[#F97316]" />
-                  {cat}
-                </h2>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div key={cat} className="mb-16 last:mb-0">
+                <div className="border-b border-[#1e1e1e] pb-6 mb-8">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333]">{cat}</p>
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1e1e1e]">
                   {catSolutions.map((solution) => (
                     <Link
                       key={solution.slug}
                       href={`/solutions/${solution.slug}`}
-                      className="group block bg-[#0B1B2B] border border-[#D7DEE8]/10 rounded-xl p-6 hover:border-[#1D4ED8]/50 hover:-translate-y-1 transition-all"
+                      className="group bg-[#111111] p-6 hover:bg-[#1a1a1a] transition-colors"
                     >
-                      <span className="text-3xl block mb-4">{solution.icon}</span>
-                      <h3 className="text-white font-bold mb-2 group-hover:text-[#22D3EE] transition-colors">
-                        {solution.name}
-                      </h3>
-                      <p className="text-[#94a3b8] text-sm leading-relaxed">{solution.tagline}</p>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] mb-4">{cat}</p>
+                      <h3 className="text-[#f0f0f0] font-medium mb-3 group-hover:opacity-80 transition-opacity">{solution.name}</h3>
+                      <p className="text-[#555555] text-xs leading-relaxed mb-5">{solution.tagline}</p>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] group-hover:text-[#888888] transition-colors">Explore →</span>
                     </Link>
                   ))}
                 </div>
@@ -55,7 +56,13 @@ export default function SolutionsPage() {
           })}
         </div>
       </section>
-      <CTASection headline="Find the right solution for your business." dark={false} />
+
+      <CTASection
+        headline="Find the right solution for your business."
+        subheadline="Start with an AI Readiness Assessment to identify which solutions to deploy first."
+        primaryCTA={{ label: "Get Started", href: "/contact" }}
+        secondaryCTA={{ label: "AI Readiness Assessment", href: "/operational-os/ai-readiness-assessment" }}
+      />
     </>
   );
 }
