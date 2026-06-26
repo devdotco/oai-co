@@ -1,11 +1,38 @@
-import type { Metadata } from "next";
+'use client'
 
-export const metadata: Metadata = {
-  title: "Contact OAI.co — Build Your AI Operating System",
-  description: "Talk to an Operational OS™ specialist about deploying AI across your middle market business.",
-};
+import { useState } from 'react'
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setStatus('sending')
+
+    const form = e.currentTarget
+    const data = {
+      firstName: (form.elements.namedItem('firstName') as HTMLInputElement).value,
+      lastName: (form.elements.namedItem('lastName') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      company: (form.elements.namedItem('company') as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      setStatus(res.ok ? 'sent' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const inputClass = "w-full bg-transparent border border-[#1e1e1e] px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#333333] focus:outline-none focus:border-[#555555] transition-colors"
+  const labelClass = "font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] block mb-2"
+
   return (
     <section className="min-h-screen flex flex-col justify-end px-6 pb-20 pt-36 bg-[#0a0a0a]">
       <div className="max-w-[1400px] mx-auto w-full">
@@ -22,33 +49,52 @@ export default function ContactPage() {
             <p className="text-sm text-[#555555] leading-relaxed mb-10">
               Tell us about your business. An Operational OS™ specialist will follow up within one business day.
             </p>
-            <form className="space-y-5" action="https://formspree.io/f/placeholder" method="POST">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] block mb-2">First Name</label>
-                  <input type="text" name="firstName" required className="w-full bg-transparent border border-[#1e1e1e] px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#333333] focus:outline-none focus:border-[#555555] transition-colors" placeholder="Jane" />
+
+            {status === 'sent' ? (
+              <div className="border border-[#1e1e1e] px-6 py-10 text-center">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#555555] mb-3">Message Sent</p>
+                <p className="text-sm text-[#f0f0f0]">We'll follow up within one business day.</p>
+              </div>
+            ) : (
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className={labelClass}>First Name</label>
+                    <input type="text" name="firstName" required className={inputClass} placeholder="Jane" />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Last Name</label>
+                    <input type="text" name="lastName" required className={inputClass} placeholder="Smith" />
+                  </div>
                 </div>
                 <div>
-                  <label className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] block mb-2">Last Name</label>
-                  <input type="text" name="lastName" required className="w-full bg-transparent border border-[#1e1e1e] px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#333333] focus:outline-none focus:border-[#555555] transition-colors" placeholder="Smith" />
+                  <label className={labelClass}>Business Email</label>
+                  <input type="email" name="email" required className={inputClass} placeholder="jane@company.com" />
                 </div>
-              </div>
-              <div>
-                <label className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] block mb-2">Business Email</label>
-                <input type="email" name="email" required className="w-full bg-transparent border border-[#1e1e1e] px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#333333] focus:outline-none focus:border-[#555555] transition-colors" placeholder="jane@company.com" />
-              </div>
-              <div>
-                <label className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] block mb-2">Company</label>
-                <input type="text" name="company" required className="w-full bg-transparent border border-[#1e1e1e] px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#333333] focus:outline-none focus:border-[#555555] transition-colors" placeholder="Acme Inc." />
-              </div>
-              <div>
-                <label className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] block mb-2">What are you trying to solve?</label>
-                <textarea name="message" rows={4} className="w-full bg-transparent border border-[#1e1e1e] px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#333333] focus:outline-none focus:border-[#555555] transition-colors resize-none" placeholder="Describe your operational challenges or AI goals..." />
-              </div>
-              <button type="submit" className="w-full px-6 py-3 bg-[#f0f0f0] text-[#0a0a0a] font-mono text-[11px] uppercase tracking-[0.15em] hover:opacity-80 transition-opacity">
-                Send Message →
-              </button>
-            </form>
+                <div>
+                  <label className={labelClass}>Company</label>
+                  <input type="text" name="company" required className={inputClass} placeholder="Acme Inc." />
+                </div>
+                <div>
+                  <label className={labelClass}>What are you trying to solve?</label>
+                  <textarea name="message" rows={4} className={`${inputClass} resize-none`} placeholder="Describe your operational challenges or AI goals..." />
+                </div>
+
+                {status === 'error' && (
+                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-red-500">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="w-full px-6 py-3 bg-[#f0f0f0] text-[#0a0a0a] font-mono text-[11px] uppercase tracking-[0.15em] hover:opacity-80 transition-opacity disabled:opacity-40"
+                >
+                  {status === 'sending' ? 'Sending…' : 'Send Message →'}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Info */}
@@ -74,5 +120,5 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
-  );
+  )
 }
