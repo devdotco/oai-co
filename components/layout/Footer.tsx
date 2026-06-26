@@ -80,7 +80,7 @@ export default function Footer() {
             © {new Date().getFullYear()} OAI.co. Operational OS™ is a trademark of OAI.co.
           </p>
           <div className="flex items-center gap-6">
-            <a href="https://dev.co/privacy" target="_blank" rel="noopener noreferrer" className="text-[#333333] hover:text-[#f0f0f0] text-xs font-mono transition-colors">
+            <a href="https://dev.co/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#333333] hover:text-[#f0f0f0] text-xs font-mono transition-colors">
               Privacy
             </a>
             <a href="https://dev.co/terms" target="_blank" rel="noopener noreferrer" className="text-[#333333] hover:text-[#f0f0f0] text-xs font-mono transition-colors">
