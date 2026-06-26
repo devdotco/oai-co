@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 interface CTASectionProps {
   headline?: string;
@@ -16,60 +15,35 @@ export default function CTASection({
   subheadline = "Talk to an Operational OS™ specialist about your business.",
   primaryCTA = { label: "Build Your AI OS", href: "/contact" },
   secondaryCTA = { label: "Explore Operational OS™", href: "/operational-os" },
-  dark = false,
 }: CTASectionProps) {
   return (
-    <section className={`py-24 ${dark ? "bg-[#07111F]" : "bg-gradient-to-br from-[#1D4ED8] to-[#0891b2]"} relative overflow-hidden`}>
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `linear-gradient(#22D3EE 1px, transparent 1px), linear-gradient(90deg, #22D3EE 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {dark && (
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1D4ED8]/20 border border-[#1D4ED8]/30 text-[#22D3EE] text-sm font-medium mb-8">
-              <span className="w-2 h-2 rounded-full bg-[#22D3EE] animate-pulse" />
-              Ready to get started?
-            </div>
-          )}
-          <h2 className={`text-3xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight ${dark ? "text-white" : "text-white"}`}>
+    <section className="py-24 bg-[#0a0a0a] border-t border-[#1e1e1e]">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-8">
+            Get started
+          </p>
+          <h2 className="text-3xl lg:text-5xl font-light text-[#f0f0f0] leading-tight mb-6">
             {headline}
           </h2>
-          <p className={`text-lg mb-10 max-w-xl mx-auto ${dark ? "text-[#94a3b8]" : "text-blue-100"}`}>
+          <p className="text-sm text-[#555555] leading-relaxed mb-10">
             {subheadline}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href={primaryCTA.href}
-              className={`px-8 py-4 font-bold rounded-lg transition-all shadow-xl text-sm ${
-                dark
-                  ? "bg-[#1D4ED8] hover:bg-[#1e40af] text-white hover:shadow-blue-900/30"
-                  : "bg-white text-[#1D4ED8] hover:bg-[#F8FAFC]"
-              }`}
+              className="px-6 py-3 bg-[#f0f0f0] text-[#0a0a0a] font-mono text-[11px] uppercase tracking-[0.15em] hover:opacity-80 transition-opacity"
             >
               {primaryCTA.label} →
             </Link>
             <Link
               href={secondaryCTA.href}
-              className={`px-8 py-4 font-semibold rounded-lg transition-all border text-sm ${
-                dark
-                  ? "border-[#D7DEE8]/20 text-white hover:border-white/40 hover:bg-white/5"
-                  : "border-white/30 text-white hover:bg-white/10"
-              }`}
+              className="px-6 py-3 border border-[#1e1e1e] text-[#555555] font-mono text-[11px] uppercase tracking-[0.15em] hover:border-[#333333] hover:text-[#f0f0f0] transition-colors"
             >
               {secondaryCTA.label}
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

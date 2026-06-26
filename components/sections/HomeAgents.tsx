@@ -1,79 +1,60 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { departmentAgents } from "@/data/agents";
 
 export default function HomeAgents() {
   return (
-    <section className="py-24 bg-[#0B1B2B]">
+    <section className="py-24 bg-[#0a0a0a]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="flex items-end justify-between mb-16">
+        <div className="border-b border-[#1e1e1e] pb-10 mb-12 flex items-end justify-between">
           <div>
-            <span className="text-[#22D3EE] text-sm font-semibold uppercase tracking-widest">Agentic Workforce</span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mt-3">
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">
+              Agentic Workforce
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0]">
               Build your AI agent team
             </h2>
-            <p className="text-[#94a3b8] mt-4 max-w-xl">
-              Specialized agents that execute repeatable work across every department — built on Operational OS™.
-            </p>
           </div>
           <Link
             href="/ai-agents"
-            className="hidden lg:inline-flex items-center gap-2 text-[#22D3EE] font-semibold text-sm hover:gap-3 transition-all flex-shrink-0"
+            className="hidden lg:block font-mono text-[11px] uppercase tracking-[0.15em] text-[#555555] hover:text-[#f0f0f0] transition-colors flex-shrink-0"
           >
-            All 16 agents
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            All 16 agents →
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {departmentAgents.map((agent, i) => {
-            const colorMap: Record<string, string> = { cyan: "#22D3EE", blue: "#1D4ED8", orange: "#F97316" };
-            const accent = colorMap[agent.color] || "#22D3EE";
-            return (
-              <motion.div
-                key={agent.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-              >
-                <Link
-                  href={`/ai-agents/${agent.slug}`}
-                  className="block bg-[#07111F] border border-[#D7DEE8]/10 rounded-2xl p-6 hover:border-[#1D4ED8]/50 hover:-translate-y-1 transition-all group"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="text-3xl">{agent.icon}</span>
-                    <span
-                      className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                      style={{ color: accent, backgroundColor: `${accent}15`, border: `1px solid ${accent}30` }}
-                    >
-                      AI Agent
-                    </span>
-                  </div>
-                  <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#22D3EE] transition-colors">
-                    {agent.name}
-                  </h3>
-                  <p className="text-[#94a3b8] text-sm leading-relaxed">{agent.description.slice(0, 120)}...</p>
-                  <div className="flex items-center gap-1 mt-5 text-sm font-medium" style={{ color: accent }}>
-                    Learn more
-                    <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+        <p className="text-sm text-[#555555] leading-relaxed mb-12 max-w-xl">
+          Specialized agents that execute repeatable work across every department — built on Operational OS™.
+        </p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1e1e1e]">
+          {departmentAgents.map((agent) => (
+            <Link
+              key={agent.slug}
+              href={`/ai-agents/${agent.slug}`}
+              className="group bg-[#0a0a0a] p-6 hover:bg-[#111111] transition-colors"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] mb-4">
+                {agent.category === "department" ? "Department" : "Workflow"} Agent
+              </p>
+              <h3 className="text-[#f0f0f0] font-medium text-base mb-3 group-hover:opacity-80 transition-opacity">
+                {agent.name}
+              </h3>
+              <p className="text-[#555555] text-xs leading-relaxed">
+                {agent.description.slice(0, 100)}...
+              </p>
+              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] group-hover:text-[#888888] transition-colors">
+                Learn more →
+              </p>
+            </Link>
+          ))}
         </div>
 
-        <div className="mt-10 text-center lg:hidden">
+        <div className="mt-8 lg:hidden text-center">
           <Link
             href="/ai-agents"
-            className="inline-flex items-center gap-2 text-[#22D3EE] font-semibold text-sm"
+            className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#555555] hover:text-[#f0f0f0] transition-colors"
           >
             View all 16 agents →
           </Link>

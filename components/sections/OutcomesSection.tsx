@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface Outcome {
   metric: string;
   label: string;
@@ -11,7 +9,6 @@ export default function OutcomesSection({
   outcomes,
   title = "Measured outcomes.",
   subtitle = "Real results from Operational OS™ deployments across middle market companies.",
-  dark = false,
 }: {
   outcomes: Outcome[];
   title?: string;
@@ -19,28 +16,26 @@ export default function OutcomesSection({
   dark?: boolean;
 }) {
   return (
-    <section className={`py-24 ${dark ? "bg-[#07111F]" : "bg-[#0B1B2B]"}`}>
+    <section className="py-24 bg-[#0a0a0a]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="text-[#F97316] text-sm font-semibold uppercase tracking-widest">Outcomes</span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mt-3">{title}</h2>
-          <p className="text-[#94a3b8] mt-4 max-w-xl mx-auto">{subtitle}</p>
+        <div className="border-b border-[#1e1e1e] pb-10 mb-12 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">
+            Outcomes
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0]">{title}</h2>
+          <p className="text-sm text-[#555555] mt-4 max-w-xl mx-auto leading-relaxed">{subtitle}</p>
         </div>
-        <div className={`grid gap-6 ${outcomes.length === 4 ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-2 lg:grid-cols-3"}`}>
+        <div className={`grid gap-px bg-[#1e1e1e] ${outcomes.length === 4 ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-2 lg:grid-cols-3"}`}>
           {outcomes.map((outcome, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#07111F] border border-[#D7DEE8]/10 rounded-2xl p-8 text-center hover:border-[#1D4ED8]/40 transition-colors"
+              className="bg-[#0a0a0a] p-10 text-center hover:bg-[#111111] transition-colors"
             >
-              <div className="text-4xl lg:text-5xl font-bold gradient-text mb-3">
+              <div className="text-4xl lg:text-5xl font-light text-[#f0f0f0] mb-3">
                 {outcome.metric}
               </div>
-              <p className="text-[#94a3b8] text-sm leading-relaxed">{outcome.label}</p>
-            </motion.div>
+              <p className="text-[#555555] text-sm leading-relaxed">{outcome.label}</p>
+            </div>
           ))}
         </div>
       </div>

@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface Benefit {
   title: string;
   description: string;
@@ -12,7 +10,6 @@ export default function BenefitsGrid({
   benefits,
   title,
   subtitle,
-  dark = true,
 }: {
   benefits: Benefit[];
   title: string;
@@ -20,48 +17,33 @@ export default function BenefitsGrid({
   dark?: boolean;
 }) {
   return (
-    <section className={`py-24 ${dark ? "bg-[#07111F]" : "bg-[#F8FAFC]"}`}>
+    <section className="py-24 bg-[#0a0a0a]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="mb-16">
-          <span className={`text-sm font-semibold uppercase tracking-widest ${dark ? "text-[#22D3EE]" : "text-[#1D4ED8]"}`}>
+        <div className="border-b border-[#1e1e1e] pb-10 mb-12">
+          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">
             Capabilities
-          </span>
-          <h2 className={`text-3xl lg:text-4xl font-bold mt-3 max-w-2xl ${dark ? "text-white" : "text-[#07111F]"}`}>
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0] max-w-2xl">
             {title}
           </h2>
           {subtitle && (
-            <p className={`mt-4 max-w-xl ${dark ? "text-[#94a3b8]" : "text-[#475569]"}`}>{subtitle}</p>
+            <p className="mt-4 max-w-xl text-sm text-[#555555] leading-relaxed">{subtitle}</p>
           )}
         </div>
-        <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-4`}>
+        <div className="grid gap-px bg-[#1e1e1e] sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className={`p-6 rounded-xl border group hover:border-[#1D4ED8]/50 transition-all hover:-translate-y-1 ${
-                dark
-                  ? "bg-[#0B1B2B] border-[#D7DEE8]/10"
-                  : "bg-white border-[#D7DEE8] shadow-sm hover:shadow-lg"
-              }`}
+              className="bg-[#0a0a0a] p-6 hover:bg-[#111111] transition-colors"
             >
-              {benefit.icon && (
-                <div className="text-2xl mb-4">{benefit.icon}</div>
-              )}
-              {!benefit.icon && (
-                <div className="w-8 h-8 rounded-lg bg-[#1D4ED8]/20 border border-[#1D4ED8]/30 flex items-center justify-center mb-4">
-                  <div className="w-2 h-2 rounded-full bg-[#22D3EE]" />
-                </div>
-              )}
-              <h3 className={`font-semibold text-sm mb-2 ${dark ? "text-white" : "text-[#07111F]"}`}>
+              <div className="w-6 h-px bg-[#333333] mb-5" />
+              <h3 className="text-[#f0f0f0] text-sm font-medium mb-2">
                 {benefit.title}
               </h3>
-              <p className={`text-xs leading-relaxed ${dark ? "text-[#94a3b8]" : "text-[#475569]"}`}>
+              <p className="text-[#555555] text-xs leading-relaxed">
                 {benefit.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

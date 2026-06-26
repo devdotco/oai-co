@@ -8,115 +8,102 @@ import IntegrationsSection from "@/components/sections/IntegrationsSection";
 import OutcomesSection from "@/components/sections/OutcomesSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
-import WorkflowPipelineSVG from "@/components/svg/WorkflowPipelineSVG";
 
 export default function SolutionPageTemplate({ solution }: { solution: SolutionData }) {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-[#07111F] relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #F97316 1px, transparent 0)`,
-            backgroundSize: "44px 44px",
-          }}
-        />
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-center gap-2 mb-6">
-                <Link href="/solutions" className="text-[#94a3b8] hover:text-white text-sm transition-colors">
-                  Solutions
-                </Link>
-                <span className="text-[#475569]">/</span>
-                <span className="text-[#F97316] text-sm">{solution.category}</span>
-              </div>
+      <section className="pt-36 pb-24 bg-[#0a0a0a]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-3 mb-8 font-mono text-[11px] uppercase tracking-[0.15em] text-[#333333]">
+              <Link href="/solutions" className="hover:text-[#888888] transition-colors">
+                Solutions
+              </Link>
+              <span>/</span>
+              <span>{solution.category}</span>
+            </div>
 
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F97316]/10 border border-[#F97316]/30 text-[#F97316] text-xs font-semibold mb-6">
-                {solution.icon} {solution.category}
-              </div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-6">
+              {solution.category}
+            </p>
 
-              <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                {solution.name}
-              </h1>
-              <p className="text-xl text-[#22D3EE] font-medium mb-4">{solution.tagline}</p>
-              <p className="text-[#94a3b8] text-lg leading-relaxed mb-10">
-                {solution.heroDescription}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="px-8 py-4 bg-[#1D4ED8] hover:bg-[#1e40af] text-white font-bold rounded-lg transition-all shadow-lg text-sm"
-                >
-                  Build Your AI OS →
-                </Link>
-                <Link
-                  href="/resources/ai-roi-calculator"
-                  className="px-8 py-4 border border-[#D7DEE8]/20 text-white font-semibold rounded-lg hover:border-white/30 hover:bg-white/5 transition-all text-sm"
-                >
-                  Calculate Your ROI
-                </Link>
-              </div>
-            </motion.div>
+            <h1 className="text-5xl lg:text-7xl font-light leading-none tracking-tight text-[#f0f0f0] mb-6 max-w-4xl">
+              {solution.name}
+            </h1>
+            <p className="text-lg text-[#888888] mb-6 max-w-xl">
+              {solution.tagline}
+            </p>
+            <p className="text-sm text-[#555555] leading-relaxed mb-12 max-w-2xl">
+              {solution.heroDescription}
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <WorkflowPipelineSVG />
-            </motion.div>
-          </div>
+            <div className="border-t border-[#1e1e1e] pt-10 flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/contact"
+                className="px-6 py-3 bg-[#f0f0f0] text-[#0a0a0a] font-mono text-[11px] uppercase tracking-[0.15em] hover:opacity-80 transition-opacity"
+              >
+                Build Your AI OS →
+              </Link>
+              <Link
+                href="/resources/ai-roi-calculator"
+                className="px-6 py-3 border border-[#1e1e1e] text-[#555555] font-mono text-[11px] uppercase tracking-[0.15em] hover:border-[#333333] hover:text-[#f0f0f0] transition-colors"
+              >
+                Calculate Your ROI
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Problem */}
-      <section className="py-20 bg-[#0B1B2B]">
+      <section className="py-20 bg-[#111111]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-[#F97316] text-sm font-semibold uppercase tracking-widest">The Problem</span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mt-3 mb-6">
+            <div className="border-b border-[#1e1e1e] pb-8 mb-10">
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333]">
+                The Problem
+              </p>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0] mb-6">
               Why this matters
             </h2>
-            <p className="text-[#94a3b8] text-lg leading-relaxed">{solution.problem}</p>
+            <p className="text-sm text-[#555555] leading-relaxed">{solution.problem}</p>
           </div>
         </div>
       </section>
 
       {/* Capabilities */}
-      <section className="py-24 bg-[#07111F]">
+      <section className="py-24 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="mb-16">
-            <span className="text-[#22D3EE] text-sm font-semibold uppercase tracking-widest">Capabilities</span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mt-3">
+          <div className="border-b border-[#1e1e1e] pb-10 mb-12">
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">
+              Capabilities
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0]">
               What {solution.name} handles
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1e1e1e]">
             {solution.capabilities.map((cap, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.06 }}
-                className="bg-[#0B1B2B] border border-[#D7DEE8]/10 rounded-xl p-5 hover:border-[#1D4ED8]/40 transition-colors"
+                className="bg-[#0a0a0a] p-6 hover:bg-[#111111] transition-colors"
               >
-                <div className="w-2 h-2 rounded-full bg-[#22D3EE] mb-4" />
-                <p className="text-sm text-[#94a3b8]">{cap}</p>
-              </motion.div>
+                <div className="w-6 h-px bg-[#333333] mb-5" />
+                <p className="text-sm text-[#555555] leading-relaxed">{cap}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Use cases */}
-      <UseCasesSection useCases={solution.useCases} title="How companies use it" dark={false} />
+      <UseCasesSection useCases={solution.useCases} title="How companies use it" />
 
       {/* Outcomes */}
       <OutcomesSection outcomes={solution.outcomes} title={`${solution.name} outcomes`} />
@@ -125,27 +112,29 @@ export default function SolutionPageTemplate({ solution }: { solution: SolutionD
       <IntegrationsSection integrations={solution.integrations} title="Integrates with your stack" />
 
       {/* Process */}
-      <section className="py-24 bg-[#07111F]">
+      <section className="py-24 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-[#22D3EE] text-sm font-semibold uppercase tracking-widest">Implementation</span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mt-3">
+          <div className="border-b border-[#1e1e1e] pb-10 mb-12">
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#333333] mb-4">
+              Implementation
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#f0f0f0]">
               From conversation to deployed solution
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e1e]">
             {[
-              { phase: "Week 1-2", title: "AI Readiness Assessment", desc: "Map your systems, data sources, and workflow requirements." },
-              { phase: "Week 3-4", title: "Solution Architecture", desc: "Design the agent workflows, integrations, and governance framework." },
-              { phase: "Week 5-8", title: "Build & Configure", desc: "Develop agents, connect integrations, and configure approval workflows." },
-              { phase: "Week 9-10", title: "Test & Refine", desc: "Validate performance, tune responses, and train your team." },
-              { phase: "Week 11-12", title: "Deploy & Adopt", desc: "Phased rollout with change management and user training." },
+              { phase: "Week 1–2", title: "AI Readiness Assessment", desc: "Map your systems, data sources, and workflow requirements." },
+              { phase: "Week 3–4", title: "Solution Architecture", desc: "Design the agent workflows, integrations, and governance framework." },
+              { phase: "Week 5–8", title: "Build & Configure", desc: "Develop agents, connect integrations, and configure approval workflows." },
+              { phase: "Week 9–10", title: "Test & Refine", desc: "Validate performance, tune responses, and train your team." },
+              { phase: "Week 11–12", title: "Deploy & Adopt", desc: "Phased rollout with change management and user training." },
               { phase: "Ongoing", title: "Monitor & Optimize", desc: "Continuous performance monitoring, improvement, and expansion." },
             ].map((step, i) => (
-              <div key={i} className="bg-[#0B1B2B] border border-[#D7DEE8]/10 rounded-xl p-6">
-                <div className="text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-3">{step.phase}</div>
-                <h4 className="text-white font-semibold mb-2">{step.title}</h4>
-                <p className="text-[#94a3b8] text-sm">{step.desc}</p>
+              <div key={i} className="bg-[#0a0a0a] p-6 hover:bg-[#111111] transition-colors">
+                <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#333333] mb-3">{step.phase}</p>
+                <h4 className="text-[#f0f0f0] text-sm font-medium mb-2">{step.title}</h4>
+                <p className="text-[#555555] text-xs leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -153,13 +142,12 @@ export default function SolutionPageTemplate({ solution }: { solution: SolutionD
       </section>
 
       {/* FAQ */}
-      <FAQSection faqs={solution.faqs} dark={true} />
+      <FAQSection faqs={solution.faqs} />
 
       {/* CTA */}
       <CTASection
         headline={`Ready to implement ${solution.name}?`}
         subheadline="Talk to an Operational OS™ specialist about your business requirements."
-        dark={false}
       />
     </>
   );

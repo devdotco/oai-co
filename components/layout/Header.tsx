@@ -32,20 +32,16 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#07111F]/95 backdrop-blur-xl border-b border-[#D7DEE8]/10 shadow-lg shadow-black/20"
+            ? "bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1e1e1e]"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-18">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 font-bold text-xl tracking-[0.1em]"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #22D3EE 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
+            <Link
+              href="/"
+              className="flex-shrink-0 font-mono text-sm font-medium tracking-[0.2em] text-[#f0f0f0] transition-opacity hover:opacity-60"
             >
               OAI
             </Link>
@@ -59,16 +55,16 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 flex items-center gap-1 ${
+                    className={`px-4 py-2 text-[11px] font-mono uppercase tracking-[0.15em] transition-colors duration-150 flex items-center gap-1.5 ${
                       activeMenu === item.key
-                        ? "text-white bg-white/10"
-                        : "text-[#94a3b8] hover:text-white hover:bg-white/5"
+                        ? "text-[#f0f0f0]"
+                        : "text-[#555555] hover:text-[#f0f0f0]"
                     }`}
                   >
                     {item.label}
                     {item.hasMega && (
                       <svg
-                        className={`w-3.5 h-3.5 transition-transform duration-150 ${activeMenu === item.key ? "rotate-180 text-[#22D3EE]" : ""}`}
+                        className={`w-3 h-3 transition-transform duration-150 ${activeMenu === item.key ? "rotate-180" : ""}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -83,10 +79,10 @@ export default function Header() {
             </nav>
 
             {/* CTA */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center">
               <Link
                 href="/contact"
-                className="px-5 py-2.5 bg-[#1D4ED8] hover:bg-[#1e40af] text-white text-sm font-semibold rounded-lg transition-all duration-150 hover:shadow-lg hover:shadow-blue-900/30"
+                className="px-5 py-2 bg-[#f0f0f0] text-[#0a0a0a] text-[11px] font-mono uppercase tracking-[0.15em] transition-opacity hover:opacity-80"
               >
                 Build Your AI OS
               </Link>
@@ -95,16 +91,12 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-[#94a3b8] hover:text-white"
+              className="lg:hidden flex flex-col gap-1.5"
               aria-label="Toggle menu"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                {mobileOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <span className={`block h-px w-5 bg-[#f0f0f0] transition-transform ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
+              <span className={`block h-px w-5 bg-[#f0f0f0] transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-px w-5 bg-[#f0f0f0] transition-transform ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
             </button>
           </div>
         </div>
@@ -127,24 +119,24 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#07111F] pt-16 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#0a0a0a] pt-16 overflow-y-auto"
           >
-            <div className="px-6 py-8 space-y-1">
+            <div className="px-6 py-8 space-y-px border-t border-[#1e1e1e]">
               {navigation.main.map((item) => (
                 <Link
                   key={item.key}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-white font-medium rounded-lg hover:bg-white/5 border-b border-white/5"
+                  className="block py-4 font-mono text-[11px] uppercase tracking-[0.15em] text-[#555555] hover:text-[#f0f0f0] border-b border-[#1e1e1e] transition-colors"
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="pt-6">
+              <div className="pt-8">
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="block w-full text-center px-6 py-3 bg-[#1D4ED8] text-white font-semibold rounded-lg"
+                  className="block w-full text-center py-3 bg-[#f0f0f0] text-[#0a0a0a] font-mono text-[11px] uppercase tracking-[0.15em]"
                 >
                   Build Your AI OS
                 </Link>
